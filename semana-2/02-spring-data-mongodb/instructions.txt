@@ -1,0 +1,56 @@
+PROYECTO 16 — CRUD REST de empleados con MongoDB
+================================================
+Mismo API que el proyecto 15, cambiando MySQL por MongoDB
+y la capa DAO por un MongoRepository de Spring Data.
+
+
+1) LEVANTAR MONGODB
+-------------------
+docker run --name mongo-8 -p 27017:27017 -d mongo:8
+
+Las siguientes veces basta con:
+docker start mongo-8
+
+NO HAY SCRIPTS SQL.
+No hay que crear usuario, ni permisos, ni base de datos, ni tabla.
+MongoDB standalone no trae autenticacion por defecto, y crea
+la base de datos y la coleccion solas en el primer insert.
+
+
+2) CLIENTE PARA VER LOS DATOS (opcional)
+----------------------------------------
+a) MongoDB Compass  -> equivalente grafico de MySQL Workbench
+b) mongosh          -> CLI, ya viene dentro de la imagen:
+                       docker exec -it mongo-8 mongosh employee_directory
+                       db.employees.find()
+c) docker run --name mongo-express -p 8081:8081 ... (ojo: choca con el puerto de la app)
+
+
+3) ARRANCAR LA APLICACION
+-------------------------
+./mvnw spring-boot:run
+
+Escucha en el puerto 8081, NO en el 8080.
+Se eligio 8081 a proposito para poder correr al mismo tiempo
+el proyecto 15 (MySQL, puerto 8080) y compararlos lado a lado.
+
+http://localhost:8081/api/employees
+
+
+4) PROBAR LOS ENDPOINTS
+-----------------------
+Guia completa en la carpeta guias/
+Script automatizado:  ./guias/test-endpoints.sh
+
+
+5) QUE CAMBIO RESPECTO AL PROYECTO 15
+-------------------------------------
+- pom.xml: spring-boot-starter-data-jpa + mysql-connector-j
+           -> spring-boot-starter-data-mongodb
+- Employee: @Entity/@Table -> @Document, @Id de Spring Data,
+            sin @Column, sin @GeneratedValue
+- El id paso de int a String (ObjectId hexadecimal de 24 caracteres)
+- Se borro el paquete dao/ completo (EmployeeDAO + EmployeeDAOJpaImpl)
+- Se agrego repository/EmployeeRepository extends MongoRepository
+- Se quito @Transactional del servicio
+- setId(0) -> setId(null) en el POST

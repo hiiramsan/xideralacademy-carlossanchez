@@ -1,0 +1,6 @@
+com\luv2code\springboot\cruddemo\service\ProductServiceImpl.class
+com\luv2code\springboot\cruddemo\entity\Product.class
+com\luv2code\springboot\cruddemo\rest\ProductRestController.class
+com\luv2code\springboot\cruddemo\CruddemoApplication.class
+com\luv2code\springboot\cruddemo\repository\ProductRepository.class
+com\luv2code\springboot\cruddemo\service\ProductService.class
