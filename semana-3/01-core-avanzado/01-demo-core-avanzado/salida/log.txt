@@ -1,0 +1,10 @@
+Tarea #4 procesada por pool-1-thread-4 en 112 ms
+Tarea #2 procesada por pool-1-thread-2 en 115 ms
+Tarea #1 procesada por pool-1-thread-1 en 157 ms
+Tarea #3 procesada por pool-1-thread-3 en 175 ms
+Tarea #6 procesada por pool-1-thread-2 en 76 ms
+Tarea #5 procesada por pool-1-thread-4 en 78 ms
+Tarea #7 procesada por pool-1-thread-1 en 77 ms
+Tarea #10 procesada por pool-1-thread-4 en 69 ms
+Tarea #9 procesada por pool-1-thread-2 en 105 ms
+Tarea #8 procesada por pool-1-thread-3 en 191 ms
