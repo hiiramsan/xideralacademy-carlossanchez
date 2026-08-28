@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.1.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.luv2code.springboot</groupId>
+	<artifactId>security-combined</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>security-combined</name>
+	<description>Seguridad REST con Basic + JWT + OAuth2 combinados - Spring Security 7</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>21</java.version>
+	</properties>
+	<dependencies>
+		<!--
+			Spring Security: el nucleo. Trae la cadena de filtros, HTTP Basic,
+			@EnableWebSecurity, etc. Lo usan los TRES mecanismos.
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!--
+			Validador de tokens JWT (Bearer). En Spring Boot 4 este starter se llama
+			...-security-oauth2-...; en Boot 3 era sin "security".
+			Lo usan dos de los tres mecanismos:
+			  - JWT      : valida los tokens que emite NUESTRO servidor (llave local).
+			  - OAuth2   : valida los tokens que emite KEYCLOAK (issuer-uri).
+			Tambien trae las clases JwtEncoder/JwtDecoder que necesita el login.
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security-oauth2-resource-server</artifactId>
+		</dependency>
+
+		<!--
+			Cliente OAuth2 / login delegado. En una app con navegador es esto lo que
+			dispara el "Iniciar sesion con Google/GitHub" y maneja el codigo de
+			autorizacion. Aqui no hacemos el flujo redireccionado en el navegador,
+			pero este starter tambien afina la validacion de tokens cuando usamos
+			un proveedor (Keycloak) en vez de llaves propias. Queda de referencia
+			para cuando quieras el flujo login-con-boton.
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jackson</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
