@@ -27,8 +27,9 @@ El **publisher** produce datos, el **suscriber** consume esos datos
     public Mono<Equipo> buscarEquipoPorId(String id) {
     return Mono.justOrEmpty(equipos.get(id))
             .delayElement(LATENCIA_SIMULADA); // simula 5s de latencia, sin bloquear
-}   
-    ```
+    }
+    ```   
+    
 
 - `Flux<T>` representa una **operacion que eventualmente producira cero, uno o muchos elementos**
 
