@@ -1,0 +1,4 @@
+base\BaseTest.class
+listeners\ScreenshotListener.class
+tests\AutomationLinksTest.class
+tests\AutomationPracticeTest.class

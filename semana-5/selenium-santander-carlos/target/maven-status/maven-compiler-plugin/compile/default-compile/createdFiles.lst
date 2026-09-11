@@ -1,0 +1,9 @@
+base\BasePage.class
+utils\DriverFactory.class
+pages\HomePage.class
+pages\PyMesPage.class
+pages\EmpresasPage.class
+pages\BancaPrivadaPage.class
+pages\AcercaDelBancoPage.class
+pages\AutomationPracticePage.class
+pages\PersonasPage.class
